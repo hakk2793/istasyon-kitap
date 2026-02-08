@@ -7,20 +7,14 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         body { background-color: #050505; color: #e0e0e0; font-family: 'Segoe UI', sans-serif; margin: 0; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
-        
-        /* Kapak Ekranı Stili */
         #cover-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 999; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
-        .cover-img { width: 80%; max-width: 300px; border-radius: 15px; border: 2px solid #3498db; box-shadow: 0 0 30px rgba(52, 152, 219, 0.4); margin-bottom: 20px; }
-        
+        .cover-img { width: 85%; max-width: 320px; border-radius: 15px; border: 2px solid #3498db; box-shadow: 0 0 30px rgba(52, 152, 219, 0.4); margin-bottom: 20px; }
         header { background: #111; padding: 15px; text-align: center; border-bottom: 2px solid #3498db; }
         .content { flex: 1; padding: 25px; overflow-y: auto; line-height: 1.8; font-size: 1.15rem; }
         h2 { color: #3498db; margin-top: 0; }
         .footer { background: #111; padding: 15px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #222; }
-        
         .btn { background: #3498db; color: white; border: none; padding: 12px 25px; border-radius: 8px; font-weight: bold; cursor: pointer; }
         .vip-card { display: none; text-align: center; background: #1a1a1a; padding: 25px; border-radius: 15px; border: 1px dashed #f1c40f; }
-        
-        /* Animasyon */
         .fade-in { animation: fadeIn 0.8s ease-in; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
@@ -29,13 +23,13 @@
 
 <div id="cover-screen" class="fade-in">
     <img src="https://r.resimlink.com/L7E1_k.jpg" alt="Kapak" class="cover-img">
-    <h1 style="color: #3498db; margin-bottom: 10px;">İSTASYON</h1>
+    <h1 style="color: #3498db; margin-bottom: 10px; letter-spacing: 2px;">İSTASYON</h1>
     <p style="color: #888; margin-bottom: 30px;">Çıkış Tanımsız</p>
-    <button class="btn" style="padding: 15px 40px; font-size: 1.1rem;" onclick="startReading()">OKUMAYA BAŞLA</button>
+    <button class="btn" style="padding: 15px 40px; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(52,152,219,0.3);" onclick="startReading()">📖 OKUMAYA BAŞLA</button>
 </div>
 
 <header id="main-header" style="display:none;">
-    <span style="font-weight: bold; letter-spacing: 2px; color: #3498db;">İSTASYON</span>
+    <span style="font-weight: bold; letter-spacing: 2px; color: #3498db;">İSTASYON: ÇIKIŞ TANIMSIZ</span>
 </header>
 
 <div class="content" id="reader" style="display:none;">
@@ -43,29 +37,32 @@
         <h2 id="ch-title"></h2>
         <p id="ch-content"></p>
     </div>
-    
     <div id="vip-area" class="vip-card">
         <h3 style="color: #f1c40f;">💎 BÖLÜM KİLİTLİ</h3>
-        <p>Gizemi çözmek ve 200 binlik borca inat hikayeyi bitirmek için VIP ol!</p>
+        <p>Gizemi çözmek ve hikayenin sonuna ulaşmak için VIP olmalısın!</p>
         <button class="btn" onclick="openVip()" style="background: #f1c40f; color: #000;">💎 VIP OL / VİDEO İZLE</button>
     </div>
 </div>
 
 <div class="footer" id="main-footer" style="display:none;">
-    <button id="prevBtn" class="btn" onclick="changePage(-1)">←</button>
-    <span id="pageInfo" style="color: #666;">1 / 11</span>
-    <button id="nextBtn" class="btn" onclick="changePage(1)">→</button>
+    <button id="prevBtn" class="btn" onclick="changePage(-1)">← Geri</button>
+    <span id="pageInfo" style="color: #666; font-size: 0.9rem;">1 / 11</span>
+    <button id="nextBtn" class="btn" onclick="changePage(1)">İleri →</button>
 </div>
 
 <script>
     const story = [
-        {t: "Bölüm 1: Peron 9", c: "Tren istasyonu, olması gerekenden daha sessizdi. Ne anons vardı ne de ayak sesleri... Adam peronda tek başınaydı. Saatine baktı. Camı çatlamıştı."},
-        {t: "Bölüm 2: Kapalı Devre", c: "Perondan çıktığını sandığı an, ışık bir kez daha söndü. Karanlık daha derindi."},
-        {t: "Bölüm 3: Kuanta", c: "Işık geri geldiğinde istasyon yoktu. 'Ben Kuanta,' dedi varlık. 'Bu alanın tasarımcısıyım.'"},
-        {t: "Bölüm 4: Geri Düşüş", c: "Zemin yok oldu. İstasyon geri gelmişti ama duvarlardaki yazılar tersti."},
-        {t: "Bölüm 5: Eşik", c: "Bu kez düşüş bitmedi. Uzun, katmanlı bir karanlık vardı. Kuanta'nın sesi: 'Burası Eşik.'"},
-        // ... (Diğer tüm 11 bölümü buraya aynı formatta ekleyebilirsin yeğenim)
-        {t: "Bölüm 11: Çıkış", c: "Boşluğa adım attığında istasyon sustu. Kapı kapandığında ses çıkmadı. Özgürlük."}
+        {t: "Bölüm 1: Peron 9", c: "Tren istasyonu sessizdi. Adam peronda tek başınaydı. Saatine baktı, camı çatlamıştı..."},
+        {t: "Bölüm 2: Kapalı Devre", c: "Işık söndü, karanlık daha derindi. İstasyonun hatırası kapandı üstüne..."},
+        {t: "Bölüm 3: Kuanta", c: "Işık geldiğinde 'Ben Kuanta,' dedi varlık. 'Bu alanın tasarımcısıyım.'"},
+        {t: "Bölüm 4: Geri Düşüş", c: "Zemin yok oldu. İstasyon geri geldi ama duvarlardaki yazılar tersti."},
+        {t: "Bölüm 5: Eşik", c: "Düşüş bitmedi. Uzun, katmanlı bir karanlık vardı. Kuanta: 'Burası Eşik.'"},
+        {t: "Bölüm 6: Çatlak", c: "Işığın içinde saç teli kadar ince bir çatlak belirdi. Kuanta korkuyordu."},
+        {t: "Bölüm 7: Kayma", c: "Zaman kaydı. Geçmiş ve gelecek aynı anda yaşanıyordu. 'Sen bir sistem hatasısın.'"},
+        {t: "Bölüm 8: Bedel", c: "Adam artık eski adam değildi. Anıları soluyor, yerine kodlar geliyordu."},
+        {t: "Bölüm 9: Yankı", c: "Kendisi iki kez vardı. Biri adım atan, diğeri izleyen. Sistem çöküyordu."},
+        {t: "Bölüm 10: Kilit", c: "İstasyonun kalbi açıldı. 'Buraya girersen ben kalırım, sen çıkarsın.'"},
+        {t: "Bölüm 11: Çıkış", c: "Boşluğa adım attığında sistem sustu. Bu bir zafer değildi ama özgürlüktü."}
     ];
 
     let current = 0;
@@ -85,7 +82,7 @@
         const vipArea = document.getElementById('vip-area');
         const nextBtn = document.getElementById('nextBtn');
 
-        if (current >= 4) { // 5. Bölüm ve sonrası kilitle [2026-02-02]
+        if (current >= 4) { // 5. Bölümden itibaren VIP kilidi
             textArea.style.display = 'none';
             vipArea.style.display = 'block';
             nextBtn.disabled = true;
@@ -107,4 +104,3 @@
 </script>
 </body>
 </html>
-
