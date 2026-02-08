@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İstasyon: Çıkış Tanımsız</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body { background-color: #050505; color: #e0e0e0; font-family: 'Segoe UI', sans-serif; margin: 0; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+        
+        /* Kapak Ekranı Stili */
+        #cover-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 999; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+        .cover-img { width: 80%; max-width: 300px; border-radius: 15px; border: 2px solid #3498db; box-shadow: 0 0 30px rgba(52, 152, 219, 0.4); margin-bottom: 20px; }
+        
+        header { background: #111; padding: 15px; text-align: center; border-bottom: 2px solid #3498db; }
+        .content { flex: 1; padding: 25px; overflow-y: auto; line-height: 1.8; font-size: 1.15rem; }
+        h2 { color: #3498db; margin-top: 0; }
+        .footer { background: #111; padding: 15px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #222; }
+        
+        .btn { background: #3498db; color: white; border: none; padding: 12px 25px; border-radius: 8px; font-weight: bold; cursor: pointer; }
+        .vip-card { display: none; text-align: center; background: #1a1a1a; padding: 25px; border-radius: 15px; border: 1px dashed #f1c40f; }
+        
+        /* Animasyon */
+        .fade-in { animation: fadeIn 0.8s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+<div id="cover-screen" class="fade-in">
+    <img src="https://r.resimlink.com/L7E1_k.jpg" alt="Kapak" class="cover-img">
+    <h1 style="color: #3498db; margin-bottom: 10px;">İSTASYON</h1>
+    <p style="color: #888; margin-bottom: 30px;">Çıkış Tanımsız</p>
+    <button class="btn" style="padding: 15px 40px; font-size: 1.1rem;" onclick="startReading()">OKUMAYA BAŞLA</button>
+</div>
+
+<header id="main-header" style="display:none;">
+    <span style="font-weight: bold; letter-spacing: 2px; color: #3498db;">İSTASYON</span>
+</header>
+
+<div class="content" id="reader" style="display:none;">
+    <div id="text-area">
+        <h2 id="ch-title"></h2>
+        <p id="ch-content"></p>
+    </div>
+    
+    <div id="vip-area" class="vip-card">
+        <h3 style="color: #f1c40f;">💎 BÖLÜM KİLİTLİ</h3>
+        <p>Gizemi çözmek ve 200 binlik borca inat hikayeyi bitirmek için VIP ol!</p>
+        <button class="btn" onclick="openVip()" style="background: #f1c40f; color: #000;">💎 VIP OL / VİDEO İZLE</button>
+    </div>
+</div>
+
+<div class="footer" id="main-footer" style="display:none;">
+    <button id="prevBtn" class="btn" onclick="changePage(-1)">←</button>
+    <span id="pageInfo" style="color: #666;">1 / 11</span>
+    <button id="nextBtn" class="btn" onclick="changePage(1)">→</button>
+</div>
+
+<script>
+    const story = [
+        {t: "Bölüm 1: Peron 9", c: "Tren istasyonu, olması gerekenden daha sessizdi. Ne anons vardı ne de ayak sesleri... Adam peronda tek başınaydı. Saatine baktı. Camı çatlamıştı."},
+        {t: "Bölüm 2: Kapalı Devre", c: "Perondan çıktığını sandığı an, ışık bir kez daha söndü. Karanlık daha derindi."},
+        {t: "Bölüm 3: Kuanta", c: "Işık geri geldiğinde istasyon yoktu. 'Ben Kuanta,' dedi varlık. 'Bu alanın tasarımcısıyım.'"},
+        {t: "Bölüm 4: Geri Düşüş", c: "Zemin yok oldu. İstasyon geri gelmişti ama duvarlardaki yazılar tersti."},
+        {t: "Bölüm 5: Eşik", c: "Bu kez düşüş bitmedi. Uzun, katmanlı bir karanlık vardı. Kuanta'nın sesi: 'Burası Eşik.'"},
+        // ... (Diğer tüm 11 bölümü buraya aynı formatta ekleyebilirsin yeğenim)
+        {t: "Bölüm 11: Çıkış", c: "Boşluğa adım attığında istasyon sustu. Kapı kapandığında ses çıkmadı. Özgürlük."}
+    ];
+
+    let current = 0;
+    const tg = window.Telegram.WebApp;
+    tg.expand();
+
+    function startReading() {
+        document.getElementById('cover-screen').style.display = 'none';
+        document.getElementById('main-header').style.display = 'block';
+        document.getElementById('reader').style.display = 'block';
+        document.getElementById('main-footer').style.display = 'flex';
+        render();
+    }
+
+    function render() {
+        const textArea = document.getElementById('text-area');
+        const vipArea = document.getElementById('vip-area');
+        const nextBtn = document.getElementById('nextBtn');
+
+        if (current >= 4) { // 5. Bölüm ve sonrası kilitle [2026-02-02]
+            textArea.style.display = 'none';
+            vipArea.style.display = 'block';
+            nextBtn.disabled = true;
+        } else {
+            textArea.style.display = 'block';
+            vipArea.style.display = 'none';
+            nextBtn.disabled = false;
+        }
+
+        document.getElementById('ch-title').innerText = story[current].t;
+        document.getElementById('ch-content').innerText = story[current].c;
+        document.getElementById('pageInfo').innerText = `${current + 1} / 11`;
+        document.getElementById('prevBtn').disabled = current === 0;
+        document.getElementById('reader').scrollTop = 0;
+    }
+
+    function changePage(dir) { current += dir; render(); }
+    function openVip() { tg.openTelegramLink("https://t.me/GogircinAdminBot"); }
+</script>
+</body>
+</html>
+
