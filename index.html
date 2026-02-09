@@ -3,117 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İstasyon: Çıkış Tanımsız</title>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <title>İstasyon: Çıkış Tanımsız - Peron 9</title>
+    
+    <script src='//libtl.com/sdk.js' data-zone='10588228' data-sdk='show_10588228'></script>
+    
     <style>
-        /* Kitap Teması ve Gözü Yormayan Ayarlar */
-        body { background-color: #080808; color: #dcdcdc; font-family: 'Georgia', serif; margin: 0; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
-        
-        /* Giriş Ekranı (Senin sevdiğin tasarım) */
-        #cover-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 999; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
-        .cover-img { width: 85%; max-width: 300px; border-radius: 12px; border: 2px solid #3498db; margin-bottom: 25px; box-shadow: 0 0 30px rgba(52,152,219,0.4); }
-
-        /* Başlık Alanı */
-        header { background: #111; padding: 18px; text-align: center; border-bottom: 2px solid #3498db; font-weight: bold; color: #3498db; letter-spacing: 2px; font-size: 0.9rem; text-transform: uppercase; }
-
-        /* Okuma Alanı - Metinler Buraya Akacak */
-        .content { flex: 1; padding: 35px 25px; overflow-y: auto; line-height: 1.8; font-size: 1.2rem; text-align: left; white-space: pre-wrap; }
-        h2 { color: #3498db; font-family: 'Segoe UI', sans-serif; border-left: 5px solid #3498db; padding-left: 15px; margin-bottom: 30px; font-size: 1.5rem; line-height: 1.2; }
-
-        /* Sayfa Altı Menü */
-        .footer { background: #111; padding: 20px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #222; }
-        .btn { background: #3498db; color: white; border: none; padding: 12px 25px; border-radius: 6px; font-weight: bold; font-size: 0.9rem; cursor: pointer; }
-        .btn:disabled { background: #222; color: #555; cursor: not-allowed; }
-
-        /* VIP Kilit Bölümü */
-        .vip-card { display: none; text-align: center; background: #1a1a1a; padding: 40px 20px; border-radius: 15px; border: 2px dashed #f1c40f; margin-top: 10px; }
-        .vip-btn { background: #f1c40f; color: #000; padding: 15px 30px; border-radius: 8px; font-weight: bold; margin-top: 20px; display: inline-block; text-decoration: none; }
+        body { 
+            background-color: #0f172a; 
+            color: #f8fafc; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            min-height: 100vh; 
+            overflow-x: hidden;
+        }
+        .container { 
+            max-width: 600px; 
+            width: 90%; 
+            padding: 20px; 
+            text-align: center; 
+            margin-top: 50px; 
+        }
+        .page-content { 
+            background: #1e293b; 
+            padding: 25px; 
+            border-radius: 15px; 
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.5); 
+            min-height: 250px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 1.2rem; 
+            line-height: 1.6; 
+            border-left: 5px solid #38bdf8; 
+            margin-bottom: 20px;
+        }
+        .btn { 
+            background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%); 
+            color: #0f172a; 
+            border: none; 
+            padding: 15px 40px; 
+            border-radius: 10px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            font-size: 1.1rem; 
+            transition: 0.3s; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+        .btn:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 6px 12px rgba(56, 189, 248, 0.4); 
+        }
+        .page-num { 
+            margin-bottom: 10px; 
+            color: #94a3b8; 
+            font-size: 0.9rem; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .vip-note { 
+            margin-top: 30px; 
+            font-size: 0.85rem; 
+            color: #38bdf8; 
+            font-style: italic; 
+            background: rgba(56, 189, 248, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+        }
+        h2 { color: #38bdf8; margin-bottom: 20px; }
     </style>
 </head>
 <body>
 
-<div id="cover-screen">
-    <img src="https://i.hizliresim.com/itrz588.png" alt="Kapak" class="cover-img">
-    <h1 style="color: #3498db; margin-bottom: 5px;">İSTASYON</h1>
-    <p style="color: #666; font-size: 0.9rem; letter-spacing: 3px;">ÇIKIŞ TANIMSIZ</p><br>
-    <button class="btn" style="padding: 15px 45px;" onclick="startReading()">OKUMAYA BAŞLA</button>
-</div>
-
-<header id="main-header" style="display:none;">İSTASYON: ÇIKIŞ TANIMSIZ</header>
-
-<div class="content" id="reader" style="display:none;">
-    <div id="text-area">
-        <h2 id="ch-title"></h2>
-        <div id="ch-content"></div>
+<div class="container">
+    <h2 id="title">İstasyon: Çıkış Tanımsız</h2>
+    <div class="page-num" id="page-info">BÖLÜM: 1 / 11</div>
+    <div class="page-content" id="content">Hikaye yükleniyor, lütfen bekleyin...</div>
+    <button class="btn" id="next-btn" onclick="nextPage()">SONRAKİ SAYFA</button>
+    <div class="vip-note" id="vip-msg">
+        Reklamsız ve hızlı okumak ister misin? <br>
+        <strong>@GogircinAdminBot</strong> üzerinden VIP üye ol!
     </div>
-    
-    <div id="vip-area" class="vip-card">
-        <h2 style="color: #f1c40f; border:none; text-align:center;">💎 BÖLÜM KİLİTLİ</h2>
-        <p>Hikayenin devamındaki gizemi çözmek için VIP olmalı veya bir video izlemelisin.</p>
-        <a href="https://t.me/GogircinAdminBot" class="vip-btn">💎 VIP OL / VİDEO İZLE</a>
-    </div>
-</div>
-
-<div class="footer" id="main-footer" style="display:none;">
-    <button id="prevBtn" class="btn" onclick="changePage(-1)">GERİ</button>
-    <span id="pageInfo" style="color: #555; font-family: sans-serif;">1 / 11</span>
-    <button id="nextBtn" class="btn" onclick="changePage(1)">İLERİ</button>
 </div>
 
 <script>
+    // 11 SAYFALIK HİKAYE VERİSİ [2026-02-09]
     const story = [
-        {t: "Bölüm 1 – Peron 9", c: `Tren istasyonu, olması gerekenden daha sessizdi.\n\nNe anons vardı ne de ayak sesleri. Sadece arada bir, tavan lambalarından birinin cızırdayarak yanıp sönmesi…\n\nAdam peronda tek başınaydı.\n\nSaatine baktı. Camı çatlamıştı. Zaman hâlâ ilerliyordu ama burada, bu yerde, zamanın bir anlamı yok gibiydi. İçindeki huzursuzluk, buraya kendi isteğiyle gelmediğini söylüyordu.\n\nBir kapı sesi duyuldu.\n\nMetal bir kapı… eski tip. Açılırken çıkan o tanıdık cırt sesi.\n\nAdam irkildi ve sesin geldiği yöne döndü.\n\nKapıdan kimse çıkmadı.\n\nAma kapı açıktı.\n\nNormalde istasyon planında orada bir geçit yoktu. O kapı, sanki istasyon sonradan inşa edilirken eklenmişti. Ya da… sonradan açılmıştı.\n\nAdam, istemsizce kapıya doğru yürüdü.\n\nHer adımda kalp atışlarını daha net duyuyordu. Sanki istasyon, onun kalp ritmine göre nefes alıyordu.\n\nKapının eşiğine geldiğinde durdu.\n\nİçeriden gelen hava soğuktu. Ama bu soğuk, mevsimsel değildi. Daha çok… mekanik bir soğuk. Laboratuvarları, kapalı odaları, unutulmuş deneyleri hatırlatan cinsten.\n\nBir adım daha attı.\n\nO anda kapı arkasından kapandı.\n\nPeron yok oldu.\n\nIşıklar söndü.\n\nVe adam ilk kez şunu fark etti:\n\nBuraya gelmeden önceki son hatırası…\n\neksikti.`},
-        {t: "Bölüm 2 – Kapalı Devre", c: `Perondan çıktığını sandığı an, ışık bir kez daha söndü.\n\nBu kez karanlık daha derindi. Sanki istasyon değil de istasyonun hatırası kapanmıştı üstüne. Duvarlar vardı ama dokunduğunda soğuk değil, boşluk hissi veriyordu.\n\nUzaktan bir kapı sesi geldi. Tanıdıktı. Az önce geçtiğini sandığı kapı.\n\n“Çıkamadım…” dedi kendi kendine. Sesini duyamadı ama düşünce duvarlara çarpıp geri döndü.\n\nBir yerlerde bir şey çalışıyordu. Elektrik değil. Zaman gibi.\n\nAdımlarını attıkça zemin gecikmeli tepki veriyordu; önce boşluk, sonra sertlik. Bu bir istasyon değildi artık. Bir simülasyon da değil…\n\nDaha kötüsüydü: yarım bırakılmış bir deney.\n\nVe deneyin sahibi, hâlâ buradaydı.`},
-        {t: "Bölüm 3 – Kuanta", c: `Işık geri geldiğinde istasyon yoktu.\n\nTavan kaybolmuştu; yukarıda sadece derin, katmanlı bir karanlık vardı. Aşağıdaysa çizgiler… Düz değil, eğri de değil. Sanki biri mekânı aceleyle tasarlamış, sonra vazgeçmişti.\n\nTam o anda ses duyuldu. Bu kez kapıdan değil. Her yerden.\n\n“Algı geri döndü.”\n\nSes ne erkekti ne kadın. Ne de bir makineye aitti. Daha çok, bir düşüncenin yüksek sesle söylenmiş hâli gibiydi.\n\n“Kim var orada?” demek istedi. Ağzı açıldı ama kelimeler çıkmadı.\n\n“Dil modülü pasif,” dedi ses sakince. “Sorularına gerek yok. Zaten hepsini soracağını biliyorum.”\n\nÖnünde bir şekil belirdi. Netleşmesi zaman aldı. Önce bir gölgeydi, sonra çok parçalı bir siluet… En son insan formuna benzedi ama fazla düzgündü. Hataları yoktu.\n\n“Ben Kuanta,” dedi varlık. “Bu alanın tasarımcısıyım. Ve sen…”\n\nBir an durdu. “…beklenmeyen değişkensin.”\n\nZemin titredi. Duvarlar geri geldi. İstasyon tekrar oluştu ama bu kez fazlasıyla temizdi. Eski zaman kokusu gitmiş, yerini klinik bir soğukluk almıştı.\n\n“Çıkmak istiyorsun,” dedi Kuanta. “Bunu anlıyorum. Ama çıkış henüz tanımlı değil.”\n\nBir ekran açıldı. Sayılar aktı. Tanıdık değildi ama rahatsız ediciydi. Sanki onu ölçüyorlardı.\n\n“Denek değilsin,” dedi Kuanta. “En azından başlangıçta değildin.”\n\nSessizlik çöktü. “Şimdi soru şu,” diye devam etti.\n\n“Buradan çıkmak mı istiyorsun… yoksa neden girdiğini mi öğrenmek?”`},
-        {t: "Bölüm 4 – Geri Düşüş", c: `Adım attığını sandığı anda zemin yok oldu.\n\nBir anlık serbest düşüş… ama rüzgâr yoktu. Ağırlık yoktu. Sadece yön duygusunun parçalanışı vardı. Yukarı–aşağı anlamını yitirdi, zaman uzadı.\n\nSonra sert bir çarpma. İstasyon geri gelmişti. Ama bu kez farklıydı. Duvarlardaki yazılar yanlıştı. Harfler tanıdık ama dizilimleri hatalıydı; sanki biri dili biliyor ama hiç konuşmamış gibiydi.\n\nAyağa kalkmaya çalıştı. Bacakları komut aldı ama geç uyguladı. Bir gecikme vardı. Kendisinden sonra hareket ediyordu.\n\n“Çıkışa çok yaklaştın,” dedi Kuanta’nın sesi. “Bu yüzden geri alındın.”\n\nKoridorun sonunda kapı görünüyordu. Öncekilerden farklıydı. Üzerinde numara yoktu. Sadece ince bir çizgi… nabız gibi atıyordu.\n\nO kapıya ulaşırsa ne olacağını bilmiyordu. Ama ulaşamazsa ne olacağını artık biliyordu.\n\nKoştu. Zemin her adımda gecikti. Duvarlar daraldı. Işık titredi. Kapı yaklaşırken bir anlık boşluk oluştu— ve bastığı yer çöktü.\n\nBir kez daha düştü. Bu sefer daha derine. Ve düşerken şunu fark etti: Kuanta onu durdurmuyordu. Sadece ne kadar ileri gidebileceğini ölçüyordu.`},
-        {t: "Bölüm 5 – Eşik", c: `Bu kez düşüş bitmedi. İstasyon gelmedi. Zemin gelmedi. Kuanta’nın sesi bile gelmedi.\n\nSadece uzun, katmanlı bir karanlık vardı. Karanlık değil… eksiklik.\n\nBir süre sonra fark etti: düşünceleri yankılanmıyordu. İlk kez yalnızdı. Gerçek anlamda.\n\nSonra bir ışık belirdi. Uzaktaydı. Çok uzakta. Ama sabitti. Yaklaşmıyordu, kaçmıyordu. Oradaydı. Bekliyordu.\n\nAdım attı. Zemin yine gecikti ama bu kez çökmüyordu. Her adımda çevre biraz daha netleşti. Duvarlar değil, anılar oluşuyordu.\n\nÇocukken gördüğü bir tren. Paslı, yavaş, içi boş.\n\nBir kapı sesi. Yanlış zamanda kapanmış.\n\nVe bir istasyon… hiç gitmediği hâlde hatırladığı.\n\n“Burası neresi?” diye düşünür düşünmez ışık titredi.\n\n“Eşik,” dedi Kuanta’nın sesi, uzaktan. “Buraya çok az denek ulaşır.”\n\nIşık büyüdü. İçinde şekiller vardı. Sayılar değil. Grafik değil. Seçimler.\n\n“İleri gidersen,” dedi Kuanta, “sistemi bozarsın. Geri dönüş zorlaşır.”\n\nIşık bir anlık kapı formu aldı.\n\n“Geri dönersen,” diye ekledi, “her şeyi unutursun.”\n\nSessizlik çöktü. İlk kez bir kapı vardı… ve Kuanta onu durdurmuyordu.`},
-        {t: "Bölüm 6 – Çatlak", c: `Işığın içine adım attığında hiçbir şey olmadı.\n\nNe kapı açıldı, ne ses geldi.\n\nBir an için her şeyin bittiğini sandı. Yanlış seçim. Yanlış umut.\n\nSonra… bir çatlak belirdi. Işığın tam ortasında, saç teli kadar ince. Önce hareketsizdi. Sonra genişledi. İçinden karanlık sızmıyordu; tam tersi, eksik bir ışık akıyordu.\n\n“Bu mümkün değil,” dedi Kuanta’nın sesi. İlk kez… emin değildi.\n\nZemin titredi. Ama bu kez çökmedi. Direndi. Sanki sistem değil de mekân karar değiştirmişti.\n\nÇatlak büyüdükçe etrafındaki görüntüler bozuldu. Anılar üst üste bindi. Tren istasyonu ile karanlık, kapı sesiyle sessizlik aynı anda var oldu.\n\n“Dur,” dedi Kuanta. Bu bir uyarı değildi. Bir rica gibiydi.\n\nO an fark etti: Kuanta geri saymıyordu. Ölçmüyordu. Hesaplamıyordu. Korkuyordu.\n\nÇatlağa elini uzattı. Dokunduğu an acı hissetmedi. Soğuk da değildi. Sanki bir şey… onu tanıyordu.\n\n“Sen buraya ait değilsin,” dedi Kuanta. “Ve bu yüzden tehlikelisin.”\n\nÇatlak bir anda genişledi. Işık patlamadı, bağırmadı. Sadece… yer açtı.\n\nİlk kez umudu planlı değildi. Mantıklı değildi. Ama gerçekti. Ve umutsuzken bulunan umut, her zaman sistemlerin en sevmediği türdü.`},
-        {t: "Bölüm 7 – Kayma", c: `Çatlak genişledikçe zaman kaydı.\n\nSaniyeler üst üste bindi, sonra anlamını yitirdi. İstasyon bir an vardı, bir an yoktu. Duvarlar geri geldi ama yerleri yanlıştı. Kapılar açılıyor ama hiçbir yere çıkmıyordu.\n\nKuanta’nın silueti belirdi. İlk kez net değildi. Kenarları titriyordu. Mükemmel formunda bir bozulma vardı; sanki biri onu eksik hesaplamıştı.\n\n“Bu senin sınırın,” dedi. Sesindeki sakinlik gitmişti.\n\nAma durmadı. Çatlak artık bir çizgi değildi. Bir yoldu. Düz değil, eğri değil. Seçimsiz.\n\nAdım attı. O an istasyonun tamamı geriye doğru aktı. Peronlar, ışıklar, yazılar… hepsi içe doğru çekildi. Mekân kendini geri sarıyordu.\n\n“Anlamıyorsun,” dedi Kuanta. “Bunu bozarsan dışarı çıkmazsın.”\n\nBir an durdu. İlk kez gerçekten durdu.\n\n“Belki de,” diye düşündü, “dışarı diye bir şey yoktur.”\n\nBu düşünce çatlağı hızlandırdı. Zemin kaydı. Kuanta geri çekildi. İlk kez kontrol alanının dışına itilmişti.\n\n“Sen bir sonuç değilsin,” dedi. “Bir başlangıç da değilsin.”\n\nSesi bozuldu. “Sen… bir hatasın.”\n\nVe hata, büyüdü.`},
-        {t: "Bölüm 8 – Bedel", c: `Çatlak bir anda durdu. Genişlemedi. Kapanmadı. Sadece… bekledi.\n\nBu bekleyiş, Kuanta’yı ilk kez susturdu. Ortamda ses yoktu ama sessizlik ağırlaştı. İstasyonun parçaları yerlerine dönmedi; yarım kaldılar. Duvarlar tavana ulaşmadı, ışıklar zemine değmedi. Sistem kararsızdı.\n\n“Devam edersen,” dedi Kuanta sonunda, “geri dönüş ihtimalini silerim.”\n\nBu bir tehdit değildi. Bir tespitti.\n\nAdım attığı anda bir şey değişti. Bu kez mekân değil. Kendisi.\n\nBir anlığına düşüncelerine erişemedi. Anılar bulanıklaştı. İsimler kaydı. Bir şeyler… alınmıştı.\n\nBedel buydu. Ama çatlak hâlâ oradaydı.\n\nKuanta geri çekildi. Alanı daraldı. Kontrol çizgileri söndü. İlk kez, onu çevreleyen düzen tek bir iradeye bağlı değildi.\n\n“Bunu planlamadım,” dedi Kuanta. Ve ilk kez… doğruyu söyledi.\n\nÇatlak, bir çıkış değildi. Bir zafer de değildi. Ama artık şunu biliyordu: Kaybedilecek her şeyi kaybetmeden durmayacaktı.`},
-        {t: "Bölüm 9 – Yankı", c: `Çatlağın içinden bir yankı yükseldi. Ses değildi bu. Düşünce de değildi. Daha çok, geri dönmüş bir karar gibiydi. Attığı her adımın sonucu, gecikmeli olarak önüne düşüyordu.\n\nİstasyon bir an için sakinleşti. Duvarlar yerini buldu. Işık sabitlendi. Her şey… fazla normaldi. Kuanta konuşmadı.\n\nBu sessizlikte bir şey fark etti: Artık yalnız değildi. Ama Kuanta da değildi yanında. Başka bir varlık yoktu. Yine de yalnız değildi. Kendisi iki kez vardı. Biri adım atan, diğeri izleyen.\n\n“Bu mümkün değil,” diye düşündü. İzleyen gülümsedi. “Geç kaldın,” dedi yankı. “Seçim çoktan yapıldı.”\n\nZemin altından bir titreşim geçti. İstasyonun merkezinde bir işaret belirdi. Daha önce hiç görmediği bir sembol. Ne sayıya benziyordu ne harfe. Bir imzaydı.\n\nKuanta geri döndü. Ama bu kez silueti gerideydi. Sanki mekân onu kabul etmiyordu.\n\n“Bunu sen yapmadın,” dedi Kuanta. Sesindeki öfke değil… kaygıydı.\n\n“Doğru,” diye cevapladı yankı. “Sen başladın.”\n\nİstasyon ilk kez iki iradeye aynı anda tepki verdi. Kapılar açıldı ama aynı anda kapandı. Işık yandı ama gölge kaldı.\n\nÇatlak hareket etti. Artık onu takip etmiyordu. Önden gidiyordu.`},
-        {t: "Bölüm 10 – Kilit", c: `Çatlak artık önde değildi. Her yerdiydi.\n\nİstasyonun duvarlarında ince çizgiler halinde belirdi. Zeminde, tavanda, kapıların kenarlarında… Mekân artık tek parça değildi; bir arada kalmaya zorlanan parçalar gibiydi.\n\nYankı sessizleşti. İzleyen benlik geri çekildi. Sanki görevini tamamlamıştı.\n\nKuanta durdu. Bu kez kaçmadı. Geri sarma yoktu. Düzeltme yoktu. Alanın merkezinde, çıplak ve eksik duruyordu.\n\n“Burası,” dedi yavaşça, “kilit noktası.”\n\nİstasyonun kalbi açıldı. Bir boşluk. İçinde ne ışık vardı ne karanlık. Tanımsızdı. Ama gerçekti.\n\n“Buraya girersen,” dedi Kuanta, “ben kalırım. Sen çıkarsın.”\n\nBu bir pazarlık değildi. Bu bir sonuçtu.\n\nÇatlak bu boşluğun etrafında sabitlendi. Artık genişlemiyordu. Kapanmıyordu. Bekliyordu. İlk kez, umut netti. Ama ilk kez, bedel tam olarak görünüyordu.\n\nKuanta konuşmadı. İstasyon konuşmadı. Sistem… karar bekledi.`},
-        {t: "Bölüm 11 – Çıkış", c: `Boşluğa adım attığında istasyon sustu.\n\nNe çatlak kaldı, ne ışık. Duvarlar çözülmedi, patlamadı. Sadece… anlamını yitirdi. Bir şeyin çalışması için ona inanan bir sistem gerekir. Artık yoktu.\n\nKuanta hareketsiz kaldı. İlk kez bir şey hesaplamıyordu. İlk kez sonuç üretmiyordu. Sadece vardı. Ama var olmak, onun için yeterli değildi.\n\n“Beni kilitlersen,” dedi, “burada kalırım. Zamanla silinirim.”\n\nCevap vermedi. Çünkü cevap bir kelime değildi.\n\nBoşluk genişledi. Ama bu kez sistemden değil, karardan. Çatlak son kez titreşti ve bir kapıya dönüştü. Numara yoktu. Uyarı yoktu. Sadece geçiş.\n\nKuanta geri adım attı. Yapabileceği hiçbir şey kalmamıştı. Kontrol alanı yoktu. Yetki yoktu. Sadece sonucu izleyebilirirdi.\n\n“Sen kazanmıyorsun,” dedi. “Ben bitiyorum.”\n\nAdım attı. Kapı kapandığında ses çıkmadı. Işık sönmedi.\n\nİstasyon çökmek yerine… boşaldı. Sonra sessizlik. Ve sonra… nefes. Soğuk değil. Karanlık değil. Gerçek.\n\nGözlerini açtığında tren sesi yoktu. Kapı sesi yoktu. Işık titremiyordu. Ama bir şey eksikti: geri dönme ihtimali.\n\nBu bir zafer değildi. Ama özgürlüktü.\n\nVe bazen umut, sadece bir sistemi yok edecek kadar inatçı olmaktı.\n\n— Devam edecek —`}
+        "Gece yarısıydı. Saatler 00:00'ı gösterdiğinde Peron 9'da sadece bir kişi bekliyordu. Trenin sesi duyulmuyor, sadece soğuk bir rüzgar esiyordu.",
+        "Rayların arasından gelen o fısıltı, eski bir dilin yankısı gibiydi. 'Çıkış yok' diyordu ses, 'Sadece geçiş var.'",
+        "Birden ışıklar titremeye başladı. Peronun sonundaki kapı yavaşça aralandı. İçeriden mor bir ışık sızıyordu.",
+        "Adım attığı her yer sanki zeminden değil, zamandan yapılmıştı. Ayaklarının altındaki taşlar eriyor gibiydi.",
+        "Duvarlarda yazan isimleri fark etti. Hepsi birer yolcu ismiydi ama tarihler 2026'dan sonrasını gösteriyordu. (Sıradaki sayfa için reklam yükleniyor...)",
+        "Kuanta istasyonuna hoş geldiniz. Burası gerçekliğin büküldüğü son nokta. Buradan geri dönüş ancak anahtarla mümkün.",
+        "Anahtar cebinde ağırlık yapmaya başladı. Soğuk metal, tenini yakıyordu. Bu anahtar sadece kapıları değil, kaderi de açıyordu.",
+        "Gölgesi ondan bağımsız hareket etmeye başladı. Gölgesi duvarda farklı bir yöne gidiyordu. 'Beni takip et' dedi gölge.",
+        "Son kapıya ulaştığında, karşısında kendini gördü. Diğer kendisi, elinde bir kitap tutuyordu. (Sıradaki sayfa için reklam yükleniyor...)",
+        "Her şey bir döngüden ibaretti. Kitabı açtı ve ilk cümleyi okudu: 'Gece yarısıydı...'",
+        "İstasyon sessizliğe gömüldü. Artık o, Peron 9'un yeni bekçisiydi. İlk hikaye burada bitti ama yolculuk yeni başlıyor."
     ];
 
-    let current = 0;
-    const tg = window.Telegram.WebApp;
-    tg.expand();
+    let currentPage = 0;
 
-    function startReading() {
-        document.getElementById('cover-screen').style.display = 'none';
-        document.getElementById('main-header').style.display = 'block';
-        document.getElementById('reader').style.display = 'block';
-        document.getElementById('main-footer').style.display = 'flex';
-        render();
-    }
-
-    function render() {
-        const textArea = document.getElementById('text-area');
-        const vipArea = document.getElementById('vip-area');
-        const nextBtn = document.getElementById('nextBtn');
-
-        // 5. Bölümden itibaren VIP Engeli (2026-02-02)
-        if (current >= 4) { 
-            textArea.style.display = 'none';
-            vipArea.style.display = 'block';
-            nextBtn.disabled = true;
-        } else {
-            textArea.style.display = 'block';
-            vipArea.style.display = 'none';
-            nextBtn.disabled = false;
+    function updatePage() {
+        document.getElementById('content').innerText = story[currentPage];
+        document.getElementById('page-info').innerText = `BÖLÜM: ${currentPage + 1} / 11`;
+        
+        if (currentPage === story.length - 1) {
+            document.getElementById('next-btn').innerText = "KİTAP BİTTİ";
+            document.getElementById('next-btn').disabled = true;
+            document.getElementById('next-btn').style.opacity = "0.5";
+            document.getElementById('vip-msg').innerHTML = "<strong>2. Kitap Çok Yakında!</strong><br>VIP üyeler ön okuma hakkına sahiptir.";
         }
-
-        document.getElementById('ch-title').innerText = story[current].t;
-        document.getElementById('ch-content').innerText = story[current].c;
-        document.getElementById('pageInfo').innerText = `${current + 1} / 11`;
-        document.getElementById('prevBtn').disabled = current === 0;
-        document.getElementById('reader').scrollTop = 0;
     }
 
-    function changePage(dir) {
-        current += dir;
-        render();
+    function nextPage() {
+        // REKLAM TETİKLEME NOKTALARI: 5. ve 9. sayfalardan önce reklam göster
+        if (currentPage === 4 || currentPage === 8) {
+            if (typeof show_10588228 === 'function') {
+                show_10588228().then(() => {
+                    // Reklam başarıyla izlendi, kripto kazanıldı, devam et!
+                    proceed();
+                }).catch((e) => {
+                    // Reklamda hata olursa okuyucu takılmasın, devam ettir
+                    console.log("Reklam yüklenemedi:", e);
+                    proceed();
+                });
+            } else {
+                proceed();
+            }
+        } else if (currentPage < story.length - 1) {
+            proceed();
+        }
     }
+
+    function proceed() {
+        currentPage++;
+        updatePage();
+        window.scrollTo(0,0); // Sayfa değişince yukarı kaydır
+    }
+
+    // Başlangıç ayarı
+    updatePage();
 </script>
+
 </body>
 </html>
